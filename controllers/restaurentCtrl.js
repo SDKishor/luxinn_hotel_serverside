@@ -6,6 +6,7 @@ export const addFoodToDB = async (req, res, next) => {
       foodname: req.body.foodname,
       imageUrl: req.body.imageUrl,
       foodType: req.body.foodType,
+      TodaySpetial: req.body.TodaySpetial,
     });
     console.log(newfood);
     await newfood.save();
@@ -42,6 +43,14 @@ export const DeleteFood = async (req, res, next) => {
 export const GetFoodByCatagory = async (req, res, next) => {
   try {
     const foods = await FoodModel.find({ foodType: req.params.catagory });
+    res.status(200).send(foods);
+  } catch (err) {
+    next(err);
+  }
+};
+export const GetTodayFoods = async (req, res, next) => {
+  try {
+    const foods = await FoodModel.find({ TodaySpetial: true });
     res.status(200).send(foods);
   } catch (err) {
     next(err);

@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import authRouth from "./routes/authRouth.js";
 import restaurantRouth from "./routes/restaurantRouth.js";
+import roomRouth from "./routes/roomRouth.js";
 const app = express();
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 
 app.use("/auth", authRouth);
 app.use("/restaurant", restaurantRouth);
+app.use("/room", roomRouth);
 
 //errorhandeler
 app.use((err, req, res, next) => {
